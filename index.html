@@ -1,216 +1,24 @@
-{
-    question: "Do you miss me when we're apart? 🥺",
-    answers: [
-      "Every single day ❤️",
-      "More than you know 🥰",
-      "Of course, my love 💕"
-    ]
-  },
-
-  {
-    question: "If I suddenly appeared in front of you, what would you do first? 😘",
-    answers: [
-      "Hug me tightly 🤗",
-      "Kiss me 😘",
-      "Both ❤️"
-    ]
-  },
-
-  {
-    question: "Will you choose me again if you could go back in time? 🥺",
-    answers: [
-      "Always ❤️",
-      "Without thinking twice 🥰",
-      "Definitely, my love 💕"
-    ]
-  },
-
-  {
-    question: "What do you love most about me? 😍",
-    answers: [
-      "My smile 😊",
-      "My personality 🥰",
-      "Everything about me ❤️"
-    ]
-  },
-
-  {
-    question: "Will you stay with me even when I'm annoying? 😂❤️",
-    answers: [
-      "Yes, my queen 👑",
-      "I have no choice 😂❤️",
-      "Forever 😘"
-    ]
-  },
-
-  {
-    question: "Who should love me forever? 😌❤️",
-    answers: [
-      "You ❤️",
-      "My Maya ❤️",
-      "YOU, obviously 😘"
-    ]
-  },
-
-  {
-    question: "Most important question... Will you stay with me forever? 💍❤️",
-    answers: [
-      "YES, FOREVER ❤️",
-      "Obviously, my love 🥰",
-      "Forever and always 💕"
-    ]
-  }
-
-];
-
-let currentQuestion = 0;
-
-
-function startQuiz() {
-
-  document.getElementById("morningPage").classList.add("hidden");
-
-  document.getElementById("quizPage").classList.remove("hidden");
-
-  currentQuestion = 0;
-
-  showQuestion();
-
-}
-
-
-function showQuestion() {
-
-  const q = questions[currentQuestion];
-
-  document.getElementById("question").innerHTML =
-    q.question;
-
-  const answerBox =
-    document.getElementById("answers");
-
-  answerBox.innerHTML = "";
-
-  q.answers.forEach(function(answer) {
-
-    const button = document.createElement("button");
-
-    button.className = "answer";
-
-    button.innerHTML = answer;
-
-    button.onclick = function() {
-
-      createHearts();
-
-      nextQuestion();
-
-    };
-
-    answerBox.appendChild(button);
-
-  });
-
-  document.getElementById("progress").innerHTML =
-    "Question " +
-    (currentQuestion + 1) +
-    " of " +
-    questions.length;
-
-}
-
-
-function nextQuestion() {
-
-  currentQuestion++;
-
-  if (currentQuestion < questions.length) {
-
-    showQuestion();
-
-  } else {
-
-    document.getElementById("quizPage")
-      .classList.add("hidden");
-
-    document.getElementById("finalPage")
-      .classList.remove("hidden");
-
-    createLotsOfHearts();
-
-  }
-
-}
-
-
-function restart() {
-
-  document.getElementById("finalPage")
-    .classList.add("hidden");
-
-  document.getElementById("morningPage")
-    .classList.remove("hidden");
-
-}
-
-
-function createHearts() {
-
-  for (let i = 0; i < 5; i++) {
-
-    const heart = document.createElement("div");
-
-    heart.className = "heart";
-
-    heart.innerHTML =
-      ["❤️","💕","💖","💗","💘"]
-      [Math.floor(Math.random() * 5)];
-
-    heart.style.left =
-      Math.random() * 100 + "vw";
-
-    heart.style.animationDuration =
-      (3 + Math.random() * 3) + "s";
-
-    document.body.appendChild(heart);
-
-    setTimeout(function() {
-
-      heart.remove();
-
-    }, 6500);
-
-  }
-
-}
-
-
-function createLotsOfHearts() {
-
-  for (let i = 0; i < 30; i++) {
-
-    setTimeout(function() {
-
-      createHearts();
-
-    }, i * 150);
-
-  }
-
-}
-
-
-// Small floating hearts throughout the website
-
-setInterval(function() {
-
-  if (!document.hidden) {
-    createHearts();
-  }
-
-}, 3000);
-
-</script>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>For My Love ❤️</title>
+</head>
+
+<body>
+
+    <h1>🌞 Good Morning, Mero Maya ❤️</h1>
+
+    <p>Good morning, my love! 🥰</p>
+
+    <p>
+        I hope you have a beautiful day today.
+        Even though we are far from each other,
+        you are always in my heart. ❤️
+    </p>
+
+    <button onclick="alert('I love you, Mero Maya! ❤️')">
+        💕 Click Me
+    </button>
 
 </body>
 </html>
