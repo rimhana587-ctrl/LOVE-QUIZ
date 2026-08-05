@@ -1,24 +1,242 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>For My Love ❤️</title>
+<title>For My Love ❤️</title>
+
+<style>
+body {
+  background: #ffdce8;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 40px 20px;
+  color: #8b3150;
+}
+
+.box {
+  background: white;
+  max-width: 500px;
+  margin: auto;
+  padding: 30px;
+  border-radius: 25px;
+  box-shadow: 0 10px 30px #d99aaa;
+}
+
+h1 {
+  color: #e84d7a;
+}
+
+button {
+  background: #e84d7a;
+  color: white;
+  border: none;
+  padding: 14px 25px;
+  border-radius: 25px;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #d93665;
+}
+
+#quiz {
+  display: none;
+}
+
+.question {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.answer {
+  display: block;
+  width: 90%;
+  margin: 10px auto;
+}
+</style>
 </head>
 
 <body>
 
-    <h1>🌞 Good Morning, Mero Maya ❤️</h1>
+<div class="box">
 
-    <p>Good morning, my love! 🥰</p>
+<!-- LOVE MESSAGE -->
 
-    <p>
-        I hope you have a beautiful day today.
-        Even though we are far from each other,
-        you are always in my heart. ❤️
-    </p>
+<div id="message">
 
-    <button onclick="alert('I love you, Mero Maya! ❤️')">
-        💕 Click Me
-    </button>
+<h1>Good Morning, Mero Maya 🌞❤️</h1>
+
+<p>
+I love you so much, Mero Maya. ❤️
+</p>
+
+<p>
+I am so proud of you and everything you do. 🥺❤️
+</p>
+
+<p>
+No matter how far we are from each other,
+you will always have a special place in my heart. 💕
+</p>
+
+<p>
+Take care of yourself and remember that
+someone is always thinking about you. 😘
+</p>
+
+<button onclick="startQuiz()">
+💌 Start My Love Quiz
+</button>
+
+</div>
+
+
+<!-- QUIZ -->
+
+<div id="quiz">
+
+<h1>💖 Love Quiz 💖</h1>
+
+<p id="question" class="question"></p>
+
+<div id="answers"></div>
+
+<p id="number"></p>
+
+</div>
+
+
+<!-- FINAL -->
+
+<div id="final" style="display:none;">
+
+<h1>❤️ I Love You ❤️</h1>
+
+<p>
+You are one of the most special people in my life. 🥰
+</p>
+
+<p>
+I am always proud of you, my love. ❤️
+</p>
+
+<h2>Forever & Always 💕</h2>
+
+</div>
+
+</div>
+
+
+<script>
+
+let questions = [
+
+{
+question: "Do you love me? ❤️",
+answers: [
+"Yes, so much ❤️",
+"Of course 😘",
+"Forever 🥰"
+]
+},
+
+{
+question: "Do you miss me when we are apart? 🥺",
+answers: [
+"Every day ❤️",
+"All the time 💕",
+"More than you know 😘"
+]
+},
+
+{
+question: "Are you proud of us? 🥰",
+answers: [
+"Yes ❤️",
+"Very proud 💕",
+"Always 😘"
+]
+},
+
+{
+question: "Will you stay with me forever? 💍❤️",
+answers: [
+"Yes, forever ❤️",
+"Always 🥰",
+"Of course, my love 💕"
+]
+}
+
+];
+
+let current = 0;
+
+
+function startQuiz() {
+
+document.getElementById("message").style.display = "none";
+
+document.getElementById("quiz").style.display = "block";
+
+showQuestion();
+
+}
+
+
+function showQuestion() {
+
+let q = questions[current];
+
+document.getElementById("question").innerHTML = q.question;
+
+document.getElementById("number").innerHTML =
+"Question " + (current + 1) + " of " + questions.length;
+
+let answers = document.getElementById("answers");
+
+answers.innerHTML = "";
+
+q.answers.forEach(function(answer) {
+
+let button = document.createElement("button");
+
+button.className = "answer";
+
+button.innerHTML = answer;
+
+button.onclick = function() {
+
+nextQuestion();
+
+};
+
+answers.appendChild(button);
+
+});
+
+}
+
+
+function nextQuestion() {
+
+current++;
+
+if (current < questions.length) {
+
+showQuestion();
+
+} else {
+
+document.getElementById("quiz").style.display = "none";
+
+document.getElementById("final").style.display = "block";
+
+}
+
+}
+
+</script>
 
 </body>
 </html>
