@@ -1,63 +1,216 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>For My Love ❤️</title>
+{
+    question: "Do you miss me when we're apart? 🥺",
+    answers: [
+      "Every single day ❤️",
+      "More than you know 🥰",
+      "Of course, my love 💕"
+    ]
+  },
 
-    <style>
-        body {
-            margin: 0;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: pink;
-            font-family: Arial, sans-serif;
-        }
+  {
+    question: "If I suddenly appeared in front of you, what would you do first? 😘",
+    answers: [
+      "Hug me tightly 🤗",
+      "Kiss me 😘",
+      "Both ❤️"
+    ]
+  },
 
-        .box {
-            width: 80%;
-            max-width: 600px;
-            padding: 50px;
-            background: white;
-            border-radius: 30px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
+  {
+    question: "Will you choose me again if you could go back in time? 🥺",
+    answers: [
+      "Always ❤️",
+      "Without thinking twice 🥰",
+      "Definitely, my love 💕"
+    ]
+  },
 
-        h1 {
-            color: #e75480;
-            font-size: 40px;
-        }
+  {
+    question: "What do you love most about me? 😍",
+    answers: [
+      "My smile 😊",
+      "My personality 🥰",
+      "Everything about me ❤️"
+    ]
+  },
 
-        p {
-            font-size: 20px;
-            line-height: 1.8;
-        }
-    </style>
-</head>
+  {
+    question: "Will you stay with me even when I'm annoying? 😂❤️",
+    answers: [
+      "Yes, my queen 👑",
+      "I have no choice 😂❤️",
+      "Forever 😘"
+    ]
+  },
 
-<body>
+  {
+    question: "Who should love me forever? 😌❤️",
+    answers: [
+      "You ❤️",
+      "My Maya ❤️",
+      "YOU, obviously 😘"
+    ]
+  },
 
-    <div class="box">
+  {
+    question: "Most important question... Will you stay with me forever? 💍❤️",
+    answers: [
+      "YES, FOREVER ❤️",
+      "Obviously, my love 🥰",
+      "Forever and always 💕"
+    ]
+  }
 
-        <h1>🌞 Good Morning, Mero Maya ❤️</h1>
+];
 
-        <p>
-            Good morning, my love. 🥰
-        </p>
+let currentQuestion = 0;
 
-        <p>
-            I hope you woke up with a beautiful smile today.
-            Even though we are far from each other,
-            you are always in my heart. ❤️
-        </p>
 
-        <p>
-            Take care of yourself and have a beautiful day.
-            Someone is missing you very much. 🥺💕
-        </p>
+function startQuiz() {
 
-    </div>
+  document.getElementById("morningPage").classList.add("hidden");
+
+  document.getElementById("quizPage").classList.remove("hidden");
+
+  currentQuestion = 0;
+
+  showQuestion();
+
+}
+
+
+function showQuestion() {
+
+  const q = questions[currentQuestion];
+
+  document.getElementById("question").innerHTML =
+    q.question;
+
+  const answerBox =
+    document.getElementById("answers");
+
+  answerBox.innerHTML = "";
+
+  q.answers.forEach(function(answer) {
+
+    const button = document.createElement("button");
+
+    button.className = "answer";
+
+    button.innerHTML = answer;
+
+    button.onclick = function() {
+
+      createHearts();
+
+      nextQuestion();
+
+    };
+
+    answerBox.appendChild(button);
+
+  });
+
+  document.getElementById("progress").innerHTML =
+    "Question " +
+    (currentQuestion + 1) +
+    " of " +
+    questions.length;
+
+}
+
+
+function nextQuestion() {
+
+  currentQuestion++;
+
+  if (currentQuestion < questions.length) {
+
+    showQuestion();
+
+  } else {
+
+    document.getElementById("quizPage")
+      .classList.add("hidden");
+
+    document.getElementById("finalPage")
+      .classList.remove("hidden");
+
+    createLotsOfHearts();
+
+  }
+
+}
+
+
+function restart() {
+
+  document.getElementById("finalPage")
+    .classList.add("hidden");
+
+  document.getElementById("morningPage")
+    .classList.remove("hidden");
+
+}
+
+
+function createHearts() {
+
+  for (let i = 0; i < 5; i++) {
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.innerHTML =
+      ["❤️","💕","💖","💗","💘"]
+      [Math.floor(Math.random() * 5)];
+
+    heart.style.left =
+      Math.random() * 100 + "vw";
+
+    heart.style.animationDuration =
+      (3 + Math.random() * 3) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(function() {
+
+      heart.remove();
+
+    }, 6500);
+
+  }
+
+}
+
+
+function createLotsOfHearts() {
+
+  for (let i = 0; i < 30; i++) {
+
+    setTimeout(function() {
+
+      createHearts();
+
+    }, i * 150);
+
+  }
+
+}
+
+
+// Small floating hearts throughout the website
+
+setInterval(function() {
+
+  if (!document.hidden) {
+    createHearts();
+  }
+
+}, 3000);
+
+</script>
 
 </body>
 </html>
