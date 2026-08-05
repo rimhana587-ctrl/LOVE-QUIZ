@@ -1,154 +1,136 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Love ❤️</title>
+{
+        question: "If I suddenly appeared in front of you, what would you do first? 🥰",
+        answers: [
+            "Hug me tightly 🤗",
+            "Kiss me 😘",
+            "Both ❤️"
+        ]
+    },
 
-<style>
-    body {
-        margin: 0;
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: Arial, sans-serif;
-        background: linear-gradient(135deg, #ffd6e7, #ffeef5);
-        overflow: hidden;
+    {
+        question: "Will you choose me again if you could go back in time? 💕",
+        answers: [
+            "Always ❤️",
+            "Without thinking twice 🥺",
+            "Of course, my love 😘"
+        ]
+    },
+
+    {
+        question: "What do you love most about me? 🥰",
+        answers: [
+            "My smile 😊",
+            "My personality 💕",
+            "Everything about me ❤️"
+        ]
+    },
+
+    {
+        question: "Are you ready to tolerate my drama forever? 😂❤️",
+        answers: [
+            "Yes, my queen 👑",
+            "I have no choice 😂❤️",
+            "Forever and ever 💕"
+        ]
+    },
+
+    {
+        question: "Will you stay with me even when I'm annoying? 😜",
+        answers: [
+            "Yes ❤️",
+            "Of course 😘",
+            "You're stuck with me forever 😂"
+        ]
     }
 
-    .container {
-        background: white;
-        width: 85%;
-        max-width: 500px;
-        padding: 40px 25px;
-        border-radius: 25px;
-        text-align: center;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    }
+];
 
-    h1 {
-        color: #ff4f81;
-        font-size: 32px;
-    }
+let currentQuestion = 0;
 
-    p {
-        color: #555;
-        font-size: 20px;
-    }
+function startQuiz() {
 
-    button {
-        border: none;
-        padding: 14px 28px;
-        margin: 10px;
-        border-radius: 30px;
-        font-size: 18px;
-        cursor: pointer;
-    }
+    document.getElementById("morning").style.display = "none";
 
-    #yes {
-        background: #ff4f81;
-        color: white;
-    }
+    document.getElementById("quiz").style.display = "block";
 
-    #no {
-        background: #eee;
-        color: #555;
-    }
+    showQuestion();
 
-    #message {
-        display: none;
-        font-size: 22px;
-        color: #ff4f81;
-        margin-top: 20px;
-    }
-
-    .heart {
-        position: fixed;
-        bottom: -20px;
-        font-size: 25px;
-        animation: float 5s linear infinite;
-    }
-
-    @keyframes float {
-        from {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        to {
-            transform: translateY(-100vh);
-            opacity: 0;
-        }
-    }
-</style>
-</head>
-
-<body>
-
-<div class="container">
-
-    <h1>Hey My Love ❤️</h1>
-
-    <p id="question">
-        I have a very important question for you... 🥺
-    </p>
-
-    <p>
-        Do you love me? 💕
-    </p>
-
-    <button id="yes" onclick="yesClicked()">YES ❤️</button>
-    <button id="no" onclick="noClicked()">NO 😒</button>
-
-    <div id="message">
-        I KNEW IT! 😂❤️<br><br>
-        You're stuck with me forever now. 😌💕<br><br>
-        I love you so much, my baby! 🥺❤️
-    </div>
-
-</div>
-
-<script>
-
-function yesClicked() {
-    document.getElementById("message").style.display = "block";
-    document.getElementById("question").innerHTML =
-        "Awww! That's the answer I wanted! 🥹❤️";
-
-    document.getElementById("yes").style.display = "none";
-    document.getElementById("no").style.display = "none";
 }
 
-function noClicked() {
-    const button = document.getElementById("no");
+function showQuestion() {
 
-    button.style.position = "fixed";
+    const q = questions[currentQuestion];
 
-    button.style.left =
-        Math.random() * (window.innerWidth - 100) + "px";
+    let html = 
+        <div class="question">
+            ${q.question}
+        </div>
+    ;
 
-    button.style.top =
-        Math.random() * (window.innerHeight - 60) + "px";
+    q.answers.forEach(answer => {
+
+        html += 
+            <button class="answer"
+            onclick="nextQuestion()">
+            ${answer}
+            </button>
+        ;
+
+    });
+
+    document.getElementById("quizContent").innerHTML = html;
+
 }
 
-function createHeart() {
-    const heart = document.createElement("div");
+function nextQuestion() {
 
-    heart.className = "heart";
-    heart.innerHTML = "❤️";
+    currentQuestion++;
 
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration =
-        (3 + Math.random() * 4) + "s";
+    if (currentQuestion < questions.length) {
 
-    document.body.appendChild(heart);
+        showQuestion();
 
-    setTimeout(() => {
-        heart.remove();
-    }, 7000);
+    } else {
+
+        document.getElementById("quizContent").innerHTML = "";
+
+        document.getElementById("result").innerHTML =
+        "You passed the most important quiz... ❤️<br><br>" +
+        "You are officially stuck with me forever! 🥰💍❤️";
+
+        createHearts();
+
+    }
+
 }
 
-setInterval(createHeart, 500);
+function createHearts() {
+
+    setInterval(() => {
+
+        const heart = document.createElement("div");
+
+        heart.className = "heart";
+
+        heart.innerHTML = ["❤️","💕","💖","💗","💘"][
+            Math.floor(Math.random() * 5)
+        ];
+
+        heart.style.left =
+            Math.random() * 100 + "vw";
+
+        heart.style.animationDuration =
+            (4 + Math.random() * 4) + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 8000);
+
+    }, 500);
+
+}
 
 </script>
 
