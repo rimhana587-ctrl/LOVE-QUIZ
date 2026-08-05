@@ -1,108 +1,63 @@
-{
-        question: "Will you tolerate my drama forever? 😂❤️",
-        answers: [
-            "Yes, my love ❤️",
-            "I have no choice 😂",
-            "Forever 😘"
-        ]
-    },
+<!DOCTYPE html>
+<html>
+<head>
+    <title>For My Love ❤️</title>
 
-    {
-        question: "Will you stay with me even when I'm annoying? 😜",
-        answers: [
-            "Yes ❤️",
-            "Always 🥰",
-            "You're stuck with me forever 😂💕"
-        ]
-    }
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: pink;
+            font-family: Arial, sans-serif;
+        }
 
-];
+        .box {
+            width: 80%;
+            max-width: 600px;
+            padding: 50px;
+            background: white;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
 
-let current = 0;
+        h1 {
+            color: #e75480;
+            font-size: 40px;
+        }
 
-function startQuiz() {
+        p {
+            font-size: 20px;
+            line-height: 1.8;
+        }
+    </style>
+</head>
 
-    document.getElementById("morning").style.display = "none";
+<body>
 
-    document.getElementById("quiz").style.display = "block";
+    <div class="box">
 
-    showQuestion();
-}
+        <h1>🌞 Good Morning, Mero Maya ❤️</h1>
 
-function showQuestion() {
+        <p>
+            Good morning, my love. 🥰
+        </p>
 
-    document.getElementById("result").innerHTML = "";
+        <p>
+            I hope you woke up with a beautiful smile today.
+            Even though we are far from each other,
+            you are always in my heart. ❤️
+        </p>
 
-    let q = questions[current];
+        <p>
+            Take care of yourself and have a beautiful day.
+            Someone is missing you very much. 🥺💕
+        </p>
 
-    document.getElementById("question").innerHTML =
-        q.question;
-
-    let answerBox = document.getElementById("answers");
-
-    answerBox.innerHTML = "";
-
-    q.answers.forEach(function(answer) {
-
-        let button = document.createElement("button");
-
-        button.className = "answer";
-
-        button.innerHTML = answer;
-
-        button.onclick = nextQuestion;
-
-        answerBox.appendChild(button);
-
-    });
-}
-
-function nextQuestion() {
-
-    current++;
-
-    if (current < questions.length) {
-
-        showQuestion();
-
-    } else {
-
-        document.getElementById("question").innerHTML =
-            "💖 Quiz Complete! 💖";
-
-        document.getElementById("answers").innerHTML = "";
-
-        document.getElementById("result").innerHTML =
-            "You are officially stuck with me forever! 🥰❤️<br><br>" +
-            "I love you, mero maya! 💕";
-
-        makeHearts();
-    }
-}
-
-function makeHearts() {
-
-    setInterval(function() {
-
-        let heart = document.createElement("div");
-
-        heart.className = "heart";
-
-        heart.innerHTML = "❤️";
-
-        heart.style.left =
-            Math.random() * 100 + "vw";
-
-        document.body.appendChild(heart);
-
-        setTimeout(function() {
-            heart.remove();
-        }, 5000);
-
-    }, 500);
-}
-
-</script>
+    </div>
 
 </body>
 </html>
