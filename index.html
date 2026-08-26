@@ -1,238 +1,184 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>For My Love ❤️</title>
-
-<style>
-body {
-  background: #ffdce8;
-  font-family: Arial, sans-serif;
-  text-align: center;
-  padding: 40px 20px;
-  color: #8b3150;
-}
-
-.box {
-  background: white;
-  max-width: 500px;
-  margin: auto;
-  padding: 30px;
-  border-radius: 25px;
-  box-shadow: 0 10px 30px #d99aaa;
-}
-
-h1 {
-  color: #e84d7a;
-}
-
-button {
-  background: #e84d7a;
-  color: white;
-  border: none;
-  padding: 14px 25px;
-  border-radius: 25px;
-  font-size: 16px;
-  margin: 10px;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #d93665;
-}
-
-#quiz {
-  display: none;
-}
-
-.question {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.answer {
-  display: block;
-  width: 90%;
-  margin: 10px auto;
-}
-</style>
-</head>
-
-<body>
-
-<div class="box">
-
-<!-- LOVE MESSAGE -->
-
-<div id="message">
-
-<h1>Good Morning, Mero Maya 🌞❤️</h1>
-
-<p>
-I love you so much, Mero Maya. ❤️
-</p>
-
-<p>
-I am so proud of you and everything you do. 🥺❤️
-</p>
-
-<p>
-No matter how far we are from each other,
-you will always have a special place in my heart. 💕
-</p>
-
-<p>
-Take care of yourself and remember that
-someone is always thinking about you. 😘
-</p>
-
-<button onclick="startQuiz()">
-💌 Start My Love Quiz
-</button>
-
-</div>
-
-
-<!-- QUIZ -->
-
-<div id="quiz">
-
-<h1>💖 Love Quiz 💖</h1>
-
-<p id="question" class="question"></p>
-
-<div id="answers"></div>
-
-<p id="number"></p>
-
-</div>
-
-
-<!-- FINAL -->
-
-<div id="final" style="display:none;">
-
-<h1>❤️ I Love You ❤️</h1>
-
-<p>
-You are one of the most special people in my life. 🥰
-</p>
-
-<p>
-I am always proud of you, my love. ❤️
-</p>
-
-<h2>Forever & Always 💕</h2>
-
-</div>
-
-</div>
-
-
-<script>
-
-let questions = [
-
 {
-question: "Do you love me? ❤️",
-answers: [
-"Yes, so much ❤️",
-"Of course 😘",
-"Forever 🥰"
-]
+    question: "Your employee asks for salary early. 💰",
+    options: [
+        "💰 Sure!",
+        "😂 Why do you need it?",
+        "🏃 Run away.",
+        "😈 Work harder first."
+    ],
+    points: [5, 4, 1, 2],
+    reactions: [
+        "You are TOO nice! ❤️",
+        "Boss investigation mode activated 😂",
+        "💀 The boss has disappeared.",
+        "Employee motivation: 0% 😂"
+    ]
 },
 
 {
-question: "Do you miss me when we are apart? 🥺",
-answers: [
-"Every day ❤️",
-"All the time 💕",
-"More than you know 😘"
-]
-},
-
-{
-question: "Are you proud of us? 🥰",
-answers: [
-"Yes ❤️",
-"Very proud 💕",
-"Always 😘"
-]
-},
-
-{
-question: "Will you stay with me forever? 💍❤️",
-answers: [
-"Yes, forever ❤️",
-"Always 🥰",
-"Of course, my love 💕"
-]
+    question: "It's Friday and your employee asks: 'Can I leave early?' 😭",
+    options: [
+        "❤️ Yes, go enjoy your weekend!",
+        "😂 Only if you finish your work.",
+        "😈 Absolutely not.",
+        "🏃 Let's both leave!"
+    ],
+    points: [5, 4, 2, 5],
+    reactions: [
+        "BEST BOSS EVER! 🥹",
+        "Fair enough! 👏",
+        "FINAL BOSS ENERGY 💀",
+        "HAHAHA who's running the company?! 😂"
+    ]
 }
 
 ];
 
-let current = 0;
+let currentQuestion = 0;
+let score = 0;
 
+function startGame() {
 
-function startQuiz() {
+    document.getElementById("startScreen").style.display = "none";
+    document.getElementById("gameScreen").style.display = "block";
 
-document.getElementById("message").style.display = "none";
+    currentQuestion = 0;
+    score = 0;
 
-document.getElementById("quiz").style.display = "block";
-
-showQuestion();
-
+    showQuestion();
 }
-
 
 function showQuestion() {
 
-let q = questions[current];
+    const q = questions[currentQuestion];
 
-document.getElementById("question").innerHTML = q.question;
+    document.getElementById("questionNumber").innerText =
+        currentQuestion + 1;
 
-document.getElementById("number").innerHTML =
-"Question " + (current + 1) + " of " + questions.length;
+    document.getElementById("question").innerText =
+        q.question;
 
-let answers = document.getElementById("answers");
+    document.getElementById("reaction").innerText = "";
 
-answers.innerHTML = "";
+    document.getElementById("nextBtn").style.display = "none";
 
-q.answers.forEach(function(answer) {
+    const optionsDiv = document.getElementById("options");
 
-let button = document.createElement("button");
+    optionsDiv.innerHTML = "";
 
-button.className = "answer";
+    q.options.forEach((option, index) => {
 
-button.innerHTML = answer;
+        const button = document.createElement("button");
 
-button.onclick = function() {
+        button.className = "option";
+        button.innerText = option;
 
-nextQuestion();
+        button.onclick = function() {
+            chooseAnswer(index);
+        };
 
-};
+        optionsDiv.appendChild(button);
 
-answers.appendChild(button);
-
-});
-
+    });
 }
 
+function chooseAnswer(index) {
+
+    const q = questions[currentQuestion];
+
+    score += q.points[index];
+
+    document.getElementById("reaction").innerText =
+        q.reactions[index];
+
+    const buttons =
+        document.querySelectorAll(".option");
+
+    buttons.forEach(button => {
+        button.disabled = true;
+        button.style.opacity = "0.6";
+    });
+
+    document.getElementById("nextBtn").style.display = "inline-block";
+}
 
 function nextQuestion() {
 
-current++;
+    currentQuestion++;
 
-if (current < questions.length) {
+    if (currentQuestion < questions.length) {
 
-showQuestion();
+        showQuestion();
 
-} else {
+    } else {
 
-document.getElementById("quiz").style.display = "none";
+        showResult();
 
-document.getElementById("final").style.display = "block";
-
+    }
 }
+
+function showResult() {
+
+    document.getElementById("gameScreen").style.display = "none";
+
+    document.getElementById("resultScreen").style.display = "block";
+
+    const finalScore = Math.round(
+        (score / 25) * 100
+    );
+
+    document.getElementById("finalScore").innerText =
+        finalScore;
+
+    let title;
+    let text;
+    let emoji;
+
+    if (finalScore >= 90) {
+
+        emoji = "👼";
+        title = "SWEETEST BOSS!";
+        text =
+        "Your employees are VERY lucky! ❤️ But don't be too nice... they might start asking for salary increases every week 😂";
+
+    } else if (finalScore >= 70) {
+
+        emoji = "😂";
+        title = "FUNNY BOSS!";
+        text =
+        "You are the boss everyone wants! You work hard, joke hard, and probably scare your employees only sometimes 😂";
+
+    } else if (finalScore >= 50) {
+
+        emoji = "😈";
+        title = "STRICT BOSS!";
+        text =
+        "Your employees see you coming and suddenly remember they have work to do. 😂";
+
+    } else {
+
+        emoji = "💀";
+        title = "FINAL BOSS!";
+        text =
+        "RUN! Nobody dares to ask you for a holiday, salary advance, or even a bathroom break! 💀😂";
+
+    }
+
+    document.getElementById("resultEmoji").innerText =
+        emoji;
+
+    document.getElementById("resultTitle").innerText =
+        title;
+
+    document.getElementById("resultText").innerText =
+        text;
+}
+
+function restartGame() {
+
+    document.getElementById("resultScreen").style.display = "none";
+
+    document.getElementById("startScreen").style.display = "block";
 
 }
 
