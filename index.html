@@ -1,185 +1,157 @@
-{
-    question: "Your employee asks for salary early. 💰",
-    options: [
-        "💰 Sure!",
-        "😂 Why do you need it?",
-        "🏃 Run away.",
-        "😈 Work harder first."
-    ],
-    points: [5, 4, 1, 2],
-    reactions: [
-        "You are TOO nice! ❤️",
-        "Boss investigation mode activated 😂",
-        "💀 The boss has disappeared.",
-        "Employee motivation: 0% 😂"
-    ]
-},
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-{
-    question: "It's Friday and your employee asks: 'Can I leave early?' 😭",
-    options: [
-        "❤️ Yes, go enjoy your weekend!",
-        "😂 Only if you finish your work.",
-        "😈 Absolutely not.",
-        "🏃 Let's both leave!"
-    ],
-    points: [5, 4, 2, 5],
-    reactions: [
-        "BEST BOSS EVER! 🥹",
-        "Fair enough! 👏",
-        "FINAL BOSS ENERGY 💀",
-        "HAHAHA who's running the company?! 😂"
-    ]
-}
+    <title>I'm Sorry Sanu ❤️</title>
 
-];
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            text-align: center;
+            padding: 20px;
+        }
 
-let currentQuestion = 0;
-let score = 0;
+        .card {
+            background: white;
+            max-width: 450px;
+            padding: 35px 25px;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
 
-function startGame() {
+        .heart {
+            font-size: 65px;
+            animation: beat 1s infinite;
+        }
 
-    document.getElementById("startScreen").style.display = "none";
-    document.getElementById("gameScreen").style.display = "block";
+        @keyframes beat {
+            50% {
+                transform: scale(1.2);
+            }
+        }
 
-    currentQuestion = 0;
-    score = 0;
+        h1 {
+            color: #ff4f81;
+        }
 
-    showQuestion();
-}
+        p {
+            color: #555;
+            line-height: 1.7;
+            font-size: 17px;
+        }
 
-function showQuestion() {
+        button {
+            border: none;
+            background: #ff4f81;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 25px;
+            font-size: 17px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
 
-    const q = questions[currentQuestion];
+        button:hover {
+            transform: scale(1.05);
+        }
 
-    document.getElementById("questionNumber").innerText =
-        currentQuestion + 1;
+        #forgive {
+            display: none;
+            margin-top: 25px;
+            color: #ff4f81;
+            font-weight: bold;
+            font-size: 20px;
+        }
 
-    document.getElementById("question").innerText =
-        q.question;
+        .small {
+            font-size: 14px;
+            color: #999;
+        }
+    </style>
+</head>
 
-    document.getElementById("reaction").innerText = "";
+<body>
 
-    document.getElementById("nextBtn").style.display = "none";
+<div class="card">
 
-    const optionsDiv = document.getElementById("options");
+    <div class="heart">🥺❤️</div>
 
-    optionsDiv.innerHTML = "";
+    <h1>I'm Sorry, Sanu</h1>
 
-    q.options.forEach((option, index) => {
+    <p>
+        Sanuuu 🥺❤️
+        <br><br>
 
-        const button = document.createElement("button");
+        I'm sorry. I know I was wrong
+        and you were right. 😭
+        <br><br>
 
-        button.className = "option";
-        button.innerText = option;
+        Please forgive me.
+        I never wanted to make you upset
+        or hurt you. 🥺
+        <br><br>
 
-        button.onclick = function() {
-            chooseAnswer(index);
-        };
+        Please don't be mad at me, Sanu. 🫂❤️
+        <br><br>
 
-        optionsDiv.appendChild(button);
+        I promise I'll try to understand you
+        better and be more careful next time.
+    </p>
 
-    });
-}
+    <button onclick="forgiveMe()">
+        Please Forgive Me 🥺❤️
+    </button>
 
-function chooseAnswer(index) {
+    <div id="forgive">
+        YAYYYYY! 😭❤️
+        <br><br>
+        My Sanu forgave me! 🥹🫂
+        <br><br>
+        I LOVE YOUUUU ❤️
+    </div>
 
-    const q = questions[currentQuestion];
+    <p class="small">
+        P.S. Your silly person is waiting for your forgiveness 👉👈😂
+    </p>
 
-    score += q.points[index];
+</div>
 
-    document.getElementById("reaction").innerText =
-        q.reactions[index];
+<script>
 
-    const buttons =
-        document.querySelectorAll(".option");
+function forgiveMe() {
 
-    buttons.forEach(button => {
-        button.disabled = true;
-        button.style.opacity = "0.6";
-    });
+    document.getElementById("forgive").style.display = "block";
 
-    document.getElementById("nextBtn").style.display = "inline-block";
-}
+    for (let i = 0; i < 25; i++) {
 
-function nextQuestion() {
+        let heart = document.createElement("div");
 
-    currentQuestion++;
+        heart.innerHTML = "❤️";
 
-    if (currentQuestion < questions.length) {
+        heart.style.position = "fixed";
+        heart.style.left = Math.random() * 100 + "%";
+        heart.style.top = "100%";
+        heart.style.fontSize = "25px";
+        heart.style.transition = "3s";
 
-        showQuestion();
+        document.body.appendChild(heart);
 
-    } else {
+        setTimeout(() => {
+            heart.style.top = "-10%";
+        }, 100);
 
-        showResult();
-
+        setTimeout(() => {
+            heart.remove();
+        }, 3000);
     }
-}
-
-function showResult() {
-
-    document.getElementById("gameScreen").style.display = "none";
-
-    document.getElementById("resultScreen").style.display = "block";
-
-    const finalScore = Math.round(
-        (score / 25) * 100
-    );
-
-    document.getElementById("finalScore").innerText =
-        finalScore;
-
-    let title;
-    let text;
-    let emoji;
-
-    if (finalScore >= 90) {
-
-        emoji = "👼";
-        title = "SWEETEST BOSS!";
-        text =
-        "Your employees are VERY lucky! ❤️ But don't be too nice... they might start asking for salary increases every week 😂";
-
-    } else if (finalScore >= 70) {
-
-        emoji = "😂";
-        title = "FUNNY BOSS!";
-        text =
-        "You are the boss everyone wants! You work hard, joke hard, and probably scare your employees only sometimes 😂";
-
-    } else if (finalScore >= 50) {
-
-        emoji = "😈";
-        title = "STRICT BOSS!";
-        text =
-        "Your employees see you coming and suddenly remember they have work to do. 😂";
-
-    } else {
-
-        emoji = "💀";
-        title = "FINAL BOSS!";
-        text =
-        "RUN! Nobody dares to ask you for a holiday, salary advance, or even a bathroom break! 💀😂";
-
-    }
-
-    document.getElementById("resultEmoji").innerText =
-        emoji;
-
-    document.getElementById("resultTitle").innerText =
-        title;
-
-    document.getElementById("resultText").innerText =
-        text;
-}
-
-function restartGame() {
-
-    document.getElementById("resultScreen").style.display = "none";
-
-    document.getElementById("startScreen").style.display = "block";
-
 }
 
 </script>
