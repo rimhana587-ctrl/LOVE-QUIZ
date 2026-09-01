@@ -1,4 +1,95 @@
-<p>
+<h1>
+        EMERGENCY ALERT
+    </h1>
+
+    <p>
+        ⚠️ WARNING ⚠️
+    </p>
+
+    <p>
+        Someone is missing... 😭❤️
+    </p>
+
+    <p>
+        This is a very serious emergency.
+        🚨🥺
+    </p>
+
+    <button onclick="openEmergency()">
+        🚨 CHECK EMERGENCY
+    </button>
+
+</div>
+
+
+
+<!-- =========================
+     SCREEN 2
+========================= -->
+
+<div id="screen2" class="screen">
+
+    <div class="siren">
+        🚨
+    </div>
+
+    <h1>
+        EMERGENCY FOUND!
+    </h1>
+
+    <p>
+        We found the missing person... 👀
+    </p>
+
+    <p>
+        But first, you need to press OK. 🥺❤️
+    </p>
+
+    <button onclick="openLetter()">
+        OK 🚨❤️
+    </button>
+
+</div>
+
+
+
+<!-- =========================
+     SCREEN 3
+========================= -->
+
+<div id="screen3" class="screen">
+
+    <div class="small-heart">
+        ❤️🥺❤️
+    </div>
+
+    <h1>
+        Knock Knock... 🚪
+    </h1>
+
+    <h2>
+        Good Morning My Sunshine ☀️❤️
+    </h2>
+
+
+    <div class="letter">
+
+
+        <p>
+            Mero mutu ❤️<br>
+            Mero mutu ko tukro 🥺<br>
+            Mero baccha 🫶
+        </p>
+
+
+        <p>
+            Utnus aba haiii 😭❤️<br>
+
+            Kaam ma jani time huna lagyo.
+        </p>
+
+
+        <p>
             Utnu pardaina yeti? 😂
         </p>
 
@@ -23,7 +114,9 @@
 
 
         <p>
-            Hijo good night budi,<br>
+            Hijo good night budi,
+            <br>
+
             “Love you” ni na bhanni! 😭
         </p>
 
@@ -36,19 +129,23 @@
 
 
         <p>
-            Tara aba papi bhaye ni,<br>
+            Tara aba papi bhaye ni,
+            <br>
+
             ghamandi bhaye ni...
         </p>
 
 
-        <p class="big-love">
+        <div class="big-love">
             MERAI TW HO HAJUR 😌❤️
-        </p>
+        </div>
 
 
         <p>
-            Aba k garnu haiii 😅<br>
-            Maya garepaxi sahanu paryo ni 🤭❤️
+            Aba k garnu haiii 😅
+            <br>
+
+            Maya garepaxi sahanu paryo niii 🤭❤️
         </p>
 
 
@@ -66,9 +163,11 @@
             ❤️ You are my sunshine ❤️
         </p>
 
+
         <p>
             ❤️ You are my favorite person ❤️
         </p>
+
 
         <p>
             ❤️ You are my home ❤️
@@ -76,20 +175,24 @@
 
 
         <p>
-            🫂 Hugssss for you
+            🫂 A big hug for you
         </p>
+
 
         <p>
-            💋 Kissssss for you
+            💋 A little kiss for you
         </p>
+
 
         <p>
-            ❤️ Lots and lots of love
+            ❤️ And unlimited love for you
         </p>
 
-        <div class="hearts">
-            ❤️❤️❤️❤️❤️
+
+        <div class="small-heart">
+            ❤️ ❤️ ❤️ ❤️ ❤️
         </div>
+
 
     </div>
 
@@ -97,13 +200,16 @@
 
 
 </div>
-
 </div>
 
 
 <script>
 
-function nextScreen() {
+/* =========================
+   OPEN EMERGENCY
+========================= */
+
+function openEmergency() {
 
     document.getElementById("screen1").style.display = "none";
 
@@ -112,15 +218,22 @@ function nextScreen() {
 }
 
 
-function showLetter() {
+/* =========================
+   OPEN LOVE LETTER
+========================= */
+
+function openLetter() {
 
     document.getElementById("screen2").style.display = "none";
 
-    document.getElementById("letter").style.display = "block";
+    document.getElementById("screen3").style.display = "block";
+
+    window.scrollTo(0, 0);
 
 }
 
 </script>
+
 
 </body>
 </html>
