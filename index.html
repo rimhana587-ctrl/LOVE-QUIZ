@@ -1,33 +1,128 @@
-<p id="reply"></p>
+<p>
+                Utnu pardaina yeti dherai? 😂
+                Koi koi le hajur lai
+                <span class="special">miss garirako xa</span> niii 😭❤️
+            </p>
 
-  </div>
+            <p>
+                Uh bhane masta sutirako xa... 😭😂
+            </p>
 
-  <script>
-    function showLove() {
-      document.getElementById("reply").innerHTML =
-        "🚨 EMERGENCY SOLVED! ❤️ Mero budo lai dherai maya, hug ra kiss pathaiyo! 🫂💋🥺";
+            <p>
+                Nisturi manxeyyy 😤😂
+                Hijo good night budi,
+                <span class="special">love you</span>
+                ni na bhanni! 😭
+            </p>
+
+            <p>
+                Papi manxe! 😤😂❤️
+            </p>
+
+            <p>
+                Tara aba papi bhaye ni,
+                ghamandi bhaye ni...
+                <br>
+                <span class="special">
+                    merai tw ho hajur 😌❤️
+                </span>
+            </p>
+
+            <p>
+                Aba k garnu haiii 😅
+                Maya garepaxi sahanu paryo niii 🤭
+            </p>
+
+            <div class="biglove">
+                I LOVE YOU SO MUCH
+                <span class="pulse">❤️</span>
+            </div>
+
+            <div class="signature">
+                Mero Budoooo 🥺🫂💋
+            </div>
+
+        </div>
+
+        <br>
+
+        <button onclick="sendLove()">
+            💌 Send Love
+        </button>
+
+        <p id="reply"></p>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* OPEN LOVE MESSAGE */
+function openMessage(){
+
+    document.getElementById("emergency").style.display="none";
+
+    document.getElementById("message").style.display="block";
+
+    startHearts();
+}
+
+
+/* SEND LOVE */
+function sendLove(){
+
+    document.getElementById("reply").innerHTML =
+    "<br>🚨 Emergency solved! ❤️<br>" +
+    "Hug 🫂 + Kiss 💋 + Lots of Love ❤️" +
+    "<br>delivered to my budo! 🥺";
+
+    startHearts();
+}
+
+
+/* FLOATING HEARTS */
+function startHearts(){
+
+    for(let i=0;i<25;i++){
+
+        setTimeout(function(){
+
+            let heart=document.createElement("div");
+
+            heart.className="heart";
+
+            let emojis=[
+                "❤️",
+                "💕",
+                "💗",
+                "💖",
+                "🥺",
+                "🫂",
+                "💋"
+            ];
+
+            heart.innerHTML=
+                emojis[Math.floor(Math.random()*emojis.length)];
+
+            heart.style.left=
+                Math.random()*100+"vw";
+
+            heart.style.animationDuration=
+                (3+Math.random()*3)+"s";
+
+            document.body.appendChild(heart);
+
+            setTimeout(function(){
+                heart.remove();
+            },6000);
+
+        },i*150);
     }
+}
 
-    // Floating hearts
-    const hearts = ["❤️", "💕", "💗", "💖", "🥺", "🫂"];
-
-    setInterval(() => {
-      const heart = document.createElement("div");
-
-      heart.className = "heart";
-      heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
-
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (4 + Math.random() * 4) + "s";
-
-      document.body.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 8000);
-
-    }, 600);
-  </script>
+</script>
 
 </body>
 </html>
