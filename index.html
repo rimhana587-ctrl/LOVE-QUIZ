@@ -1,6 +1,148 @@
-<h1>
-        EMERGENCY ALERT
-    </h1>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emergency ❤️</title>
+
+<style>
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #120005;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* RED EMERGENCY LIGHT */
+.light {
+    position: fixed;
+    top: 0;
+    width: 50%;
+    height: 20px;
+    background: red;
+    box-shadow: 0 0 30px red;
+    animation: flash 0.5s infinite alternate;
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    right: 0;
+    animation-delay: 0.25s;
+}
+
+@keyframes flash {
+    from {
+        opacity: 0.2;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* SCREEN */
+.screen {
+    width: 90%;
+    max-width: 500px;
+    padding: 35px 20px;
+    background: #35000e;
+    border-radius: 25px;
+    box-shadow: 0 0 35px #ff1744;
+}
+
+.siren {
+    font-size: 65px;
+    animation: shake 0.5s infinite;
+}
+
+@keyframes shake {
+    0%,100% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-10deg);
+    }
+
+    75% {
+        transform: rotate(10deg);
+    }
+}
+
+h1 {
+    color: #ff3155;
+}
+
+p {
+    line-height: 1.8;
+}
+
+button {
+    margin-top: 20px;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 30px;
+    background: #ff1744;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 20px #ff1744;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* HIDE NEXT SCREENS */
+#okScreen,
+#letter {
+    display: none;
+}
+
+/* LETTER */
+.letter {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #ffe6eb;
+}
+
+.love {
+    color: #ff6f91;
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.heart {
+    font-size: 30px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="light left"></div>
+<div class="light right"></div>
+
+
+<!-- SCREEN 1 -->
+
+<div class="screen" id="emergency">
+
+    <div class="siren">🚨</div>
+
+    <h1>EMERGENCY ALERT</h1>
 
     <p>
         ⚠️ WARNING ⚠️
@@ -11,69 +153,50 @@
     </p>
 
     <p>
-        This is a very serious emergency.
-        🚨🥺
+        Immediate attention required!
     </p>
 
-    <button onclick="openEmergency()">
+    <button onclick="showOK()">
         🚨 CHECK EMERGENCY
     </button>
 
 </div>
 
 
+<!-- SCREEN 2 -->
 
-<!-- =========================
-     SCREEN 2
-========================= -->
+<div class="screen" id="okScreen">
 
-<div id="screen2" class="screen">
+    <div class="siren">🚨</div>
 
-    <div class="siren">
-        🚨
-    </div>
-
-    <h1>
-        EMERGENCY FOUND!
-    </h1>
+    <h1>EMERGENCY FOUND!</h1>
 
     <p>
-        We found the missing person... 👀
+        The missing person has been identified... 👀
     </p>
 
     <p>
-        But first, you need to press OK. 🥺❤️
+        Are you ready to find out who? 🥺❤️
     </p>
 
-    <button onclick="openLetter()">
+    <button onclick="showLetter()">
         OK 🚨❤️
     </button>
 
 </div>
 
 
+<!-- SCREEN 3 -->
 
-<!-- =========================
-     SCREEN 3
-========================= -->
+<div class="screen" id="letter">
 
-<div id="screen3" class="screen">
+    <div class="heart">❤️🥺❤️</div>
 
-    <div class="small-heart">
-        ❤️🥺❤️
-    </div>
+    <h1>Knock Knock... 🚪</h1>
 
-    <h1>
-        Knock Knock... 🚪
-    </h1>
-
-    <h2>
-        Good Morning My Sunshine ☀️❤️
-    </h2>
-
+    <h2>Good Morning My Sunshine ☀️❤️</h2>
 
     <div class="letter">
-
 
         <p>
             Mero mutu ❤️<br>
@@ -81,159 +204,84 @@
             Mero baccha 🫶
         </p>
 
-
         <p>
             Utnus aba haiii 😭❤️<br>
-
             Kaam ma jani time huna lagyo.
         </p>
 
-
         <p>
-            Utnu pardaina yeti? 😂
-        </p>
-
-
-        <p>
+            Utnu pardaina yeti? 😂<br>
             Koi koi le hajur lai
-            <span class="highlight">
-                miss garirako xa
-            </span>
-            niii 😭❤️
+            <b>miss garirako xa</b> niii 😭❤️
         </p>
-
 
         <p>
             Uh bhane masta sutirako xa 😭😂
         </p>
 
-
         <p>
             Nisturi manxeyyy 😤😂
         </p>
 
-
         <p>
-            Hijo good night budi,
-            <br>
-
+            Hijo good night budi,<br>
             “Love you” ni na bhanni! 😭
         </p>
 
-
         <p>
-            <span class="highlight">
-                Papi manxe! 😤😂❤️
-            </span>
+            Papi manxe! 😤😂❤️
         </p>
 
-
         <p>
-            Tara aba papi bhaye ni,
-            <br>
-
+            Tara aba papi bhaye ni,<br>
             ghamandi bhaye ni...
         </p>
 
-
-        <div class="big-love">
+        <p class="love">
             MERAI TW HO HAJUR 😌❤️
-        </div>
-
-
-        <p>
-            Aba k garnu haiii 😅
-            <br>
-
-            Maya garepaxi sahanu paryo niii 🤭❤️
         </p>
 
+        <p>
+            Aba k garnu haiii 😅<br>
+            Maya garepaxi sahanu paryo ni 🤭❤️
+        </p>
 
-        <div class="big-love">
+        <p class="love">
             I LOVE YOU SO MUCH ❤️
-        </div>
-
+        </p>
 
         <p>
             Mero Budoooo 🥺🫂💋
         </p>
 
-
         <p>
-            ❤️ You are my sunshine ❤️
-        </p>
-
-
-        <p>
-            ❤️ You are my favorite person ❤️
-        </p>
-
-
-        <p>
+            ❤️ You are my sunshine ❤️<br>
+            ❤️ You are my favorite person ❤️<br>
             ❤️ You are my home ❤️
         </p>
-
-
-        <p>
-            🫂 A big hug for you
-        </p>
-
-
-        <p>
-            💋 A little kiss for you
-        </p>
-
-
-        <p>
-            ❤️ And unlimited love for you
-        </p>
-
-
-        <div class="small-heart">
-            ❤️ ❤️ ❤️ ❤️ ❤️
-        </div>
-
 
     </div>
 
 </div>
 
 
-</div>
-</div>
-
-
 <script>
 
-/* =========================
-   OPEN EMERGENCY
-========================= */
+function showOK() {document.getElementById("emergency").style.display = "none";
 
-function openEmergency() {
-
-    document.getElementById("screen1").style.display = "none";
-
-    document.getElementById("screen2").style.display = "block";
+    document.getElementById("okScreen").style.display = "block";
 
 }
 
+function showLetter() {
 
-/* =========================
-   OPEN LOVE LETTER
-========================= */
+    document.getElementById("okScreen").style.display = "none";
 
-function openLetter() {
-
-    document.getElementById("screen2").style.display = "none";
-
-    document.getElementById("screen3").style.display = "block";
-
-    window.scrollTo(0, 0);
+    document.getElementById("letter").style.display = "block";
 
 }
 
 </script>
-
 
 </body>
 </html>
