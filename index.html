@@ -1,128 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>For My Budo ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    background: #180008;
+    color: white;
+    font-family: Arial;
+    text-align: center;
+}
+
+.box {
+    margin: 50px auto;
+    padding: 30px;
+    width: 80%;
+    max-width: 500px;
+    background: #420015;
+    border-radius: 25px;
+    box-shadow: 0 0 30px #ff1744;
+}
+
+h1 {
+    color: #ff6685;
+}
+
+button {
+    background: #ff1744;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 18px;
+}
+
+#love {
+    display: none;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+#love:target {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>🚨 EMERGENCY 🚨</h1>
+
+<h2>Knock Knock... 🚪🥺</h2>
+
+<p>Someone is missing here! 😭❤️</p>
+
+<p>⚠️ VERY SERIOUS EMERGENCY ⚠️</p>
+
+<button>
+<a href="#love">OPEN THE EMERGENCY ❤️</a>
+</button>
+
+<div id="love">
+
+<h2>☀️ Good Morning My Sunshine ☀️</h2>
+
 <p>
-                Utnu pardaina yeti dherai? 😂
-                Koi koi le hajur lai
-                <span class="special">miss garirako xa</span> niii 😭❤️
-            </p>
+Mero mutu ❤️<br>
+Mero mutu ko tukro 🥺<br>
+Mero baccha 🫶
+</p>
 
-            <p>
-                Uh bhane masta sutirako xa... 😭😂
-            </p>
+<p>
+Utnus aba haiii 😭❤️<br>
+Kaam ma jani time huna lagyo.
+</p>
 
-            <p>
-                Nisturi manxeyyy 😤😂
-                Hijo good night budi,
-                <span class="special">love you</span>
-                ni na bhanni! 😭
-            </p>
+<p>
+Utnu pardaina yeti dherai? 😂<br>
+Koi koi le hajur lai<br>
+<b>MISS GARIRAKO XA 😭❤️</b>
+</p>
 
-            <p>
-                Papi manxe! 😤😂❤️
-            </p>
+<p>
+Uh bhane masta sutirako xa 😭😂
+</p>
 
-            <p>
-                Tara aba papi bhaye ni,
-                ghamandi bhaye ni...
-                <br>
-                <span class="special">
-                    merai tw ho hajur 😌❤️
-                </span>
-            </p>
+<p>
+Nisturi manxeyyy 😤😂<br>
+Hijo good night budi,<br>
+“Love you” ni na bhanni! 😭
+</p>
 
-            <p>
-                Aba k garnu haiii 😅
-                Maya garepaxi sahanu paryo niii 🤭
-            </p>
+<p>
+<b>PAPI MANXE! 😤😂❤️</b>
+</p>
 
-            <div class="biglove">
-                I LOVE YOU SO MUCH
-                <span class="pulse">❤️</span>
-            </div>
+<p>
+Tara aba papi bhaye ni,<br>
+ghamandi bhaye ni... 😌
+</p>
 
-            <div class="signature">
-                Mero Budoooo 🥺🫂💋
-            </div>
+<h2>
+MERAI TW HO HAJUR ❤️🥺
+</h2>
 
-        </div>
+<p>
+Aba k garnu haiii 😅<br>
+Maya garepaxi sahanu paryo ni 🤭❤️
+</p>
 
-        <br>
+<h1>
+I LOVE YOU SO MUCH ❤️
+</h1>
 
-        <button onclick="sendLove()">
-            💌 Send Love
-        </button>
+<h2>
+Mero Budoooo 🥺🫂💋
+</h2>
 
-        <p id="reply"></p>
-
-    </div>
+<p>
+🌸 You are my sunshine 🌸<br>
+🌸 You are my favorite person 🌸<br>
+🌸 You are my home ❤️ 🌸
+</p>
 
 </div>
 
-
-<script>
-
-/* OPEN LOVE MESSAGE */
-function openMessage(){
-
-    document.getElementById("emergency").style.display="none";
-
-    document.getElementById("message").style.display="block";
-
-    startHearts();
-}
-
-
-/* SEND LOVE */
-function sendLove(){
-
-    document.getElementById("reply").innerHTML =
-    "<br>🚨 Emergency solved! ❤️<br>" +
-    "Hug 🫂 + Kiss 💋 + Lots of Love ❤️" +
-    "<br>delivered to my budo! 🥺";
-
-    startHearts();
-}
-
-
-/* FLOATING HEARTS */
-function startHearts(){
-
-    for(let i=0;i<25;i++){
-
-        setTimeout(function(){
-
-            let heart=document.createElement("div");
-
-            heart.className="heart";
-
-            let emojis=[
-                "❤️",
-                "💕",
-                "💗",
-                "💖",
-                "🥺",
-                "🫂",
-                "💋"
-            ];
-
-            heart.innerHTML=
-                emojis[Math.floor(Math.random()*emojis.length)];
-
-            heart.style.left=
-                Math.random()*100+"vw";
-
-            heart.style.animationDuration=
-                (3+Math.random()*3)+"s";
-
-            document.body.appendChild(heart);
-
-            setTimeout(function(){
-                heart.remove();
-            },6000);
-
-        },i*150);
-    }
-}
-
-</script>
+</div>
 
 </body>
 </html>
